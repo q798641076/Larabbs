@@ -10899,6 +10899,13 @@ body {
   margin-top: 0px;
 }
 
+.captcha {
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 5px;
+  border: 1px solid #444343;
+}
+
 footer {
   position: absolute;
   bottom: 0;
