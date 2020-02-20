@@ -36,7 +36,9 @@ class VerificationController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        //url签名认证方式
         $this->middleware('signed')->only('verify');
+        //频率限制中间件
         $this->middleware('throttle:6,1')->only('verify', 'resend');
     }
 }
