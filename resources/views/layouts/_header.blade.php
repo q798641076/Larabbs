@@ -29,7 +29,7 @@
             {{Auth::user()->name}}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a href="" class="dropdown-item">个人中心</a>
+            <a href="{{route('users.show',Auth()->user())}}" class="dropdown-item">个人中心</a>
             <a href="" class="dropdown-item">编辑资料</a>
             <div class="dropdown-divider"></div>
             <a href="" class="dropdown-item">
@@ -37,7 +37,6 @@
               <button class="btn btn-danger btn-block " type="submit">退出</button>
            {!! Form::close() !!}
             </a>
-
          </div>
         </li>
         @endguest

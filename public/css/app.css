@@ -10906,6 +10906,16 @@ body {
   border: 1px solid #444343;
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+
 footer {
   position: absolute;
   bottom: 0;
