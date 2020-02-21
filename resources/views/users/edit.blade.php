@@ -35,6 +35,7 @@
             {!! Form::label('avatar', '头像上传') !!}
             {!! Form::file('avatar', ['class'=>'form-control-file']) !!}
             {!!$errors->getBag('update')->first('avatar','<p class="text-danger">:message</p>')!!}
+            <img src="{{$user->avatar}}"  alt="{{$user->name}}" width="250px" height="250px">
           </div>
 
            {!! Form::submit('保存资料', ['class'=>'btn btn-primary']) !!}

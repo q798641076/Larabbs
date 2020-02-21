@@ -28,7 +28,7 @@ class UpdateUserRequest extends FormRequest
         return [
             'name'=>'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name,'.Auth::id(),
             'email'=>'required|email|unique:users,email,'.Auth::id(),
-            'avatar'=>'image|max:2048',
+            'avatar'=>'image|max:2048|dimensions:min_width=208,min_height=208',
             'introduction'=>'max:80',
         ];
     }
@@ -44,7 +44,8 @@ class UpdateUserRequest extends FormRequest
             'email.email'=>'邮箱格式不对',
             'introduction.max'=>'个人简历不能超过80字符',
             'avatar.image'=>'图片格式有误',
-            'avatar.max'=>'图片不能大于2mb'
+            'avatar.max'=>'图片不能大于2mb',
+            'avatar.dimensions'=>'图片像素不能低于208*208'
         ];
     }
 }

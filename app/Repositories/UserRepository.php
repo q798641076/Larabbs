@@ -12,8 +12,8 @@ class UserRepository{
        return User::findOrFail($id);
     }
 
-    public function update($request, $upload, $id){
-        if(Auth::user()->id!=$id){
+    public function update($request, $upload, $user){
+        if(Auth::user()->id!=$user->id){
            return back()->with('danger','别搞事情啊');
         };
 
@@ -29,6 +29,6 @@ class UserRepository{
          $data['avatar']=$file['path'];
        }
 
-       $this->find($id)->update($data);
+       $this->find($user->id)->update($data);
     }
 }

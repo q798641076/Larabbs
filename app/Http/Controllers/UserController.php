@@ -16,7 +16,7 @@ class UserController extends Controller
     public function __construct(UserRepository $rep)
     {
         $this->rep=$rep;
-        return $this->middleware('auth');
+        return $this->middleware('auth',['except'=>'show']);
     }
 
     public function show(User $user){
@@ -24,13 +24,16 @@ class UserController extends Controller
     }
 
     public function edit(User $user){
+        //授权：：不让这个用户去访问另外一个用户的操作界面
+        $this->authorize('update', $user);
         return view('users.edit',compact('user'));
     }
 
-    public function update(UpdateUserRequest $request, ImageUploadHandler $upload ,$id){
+    public function update(UpdateUserRequest $request, ImageUploadHandler $upload ,User $user){
+       $this->authorize('update', $user);
 
-       $this->rep->update($request,$upload, $id);
+       $this->rep->update($request,$upload, $user);
 
-       return redirect()->route('users.show',$id)->with('success','更改信息成功');
+       return redirect()->route('users.show',$user->id)->with('success','更改信息成功');
     }
 }

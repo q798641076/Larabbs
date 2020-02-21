@@ -10,7 +10,7 @@
   <div class="col-lg-3 col-md-3 col-sm-3">
     <div class="card">
 
-    <img class="card-img-top" src="{{$user->avatar}}"  alt="{{$user->name}}">
+    <img class="card-img-top" src="{{$user->avatar}}"  alt="{{$user->name}}" width="250px" height="250px">
          <div class="card-body">
         <h5><strong>个人简介：</strong></h5>
          <p>{{$user->introduction}}</p>
