@@ -13,7 +13,7 @@
         <img class="card-img-top" src="https://cdn.learnku.com/uploads/images/201709/20/1/PtDKbASVcz.png?imageView2/1/w/600/h/600"  alt="{{$user->name}}">
          <div class="card-body">
         <h5><strong>个人简介：</strong></h5>
-         <p>this is my first big blog</p>
+         <p>{{$user->introduction}}</p>
          <hr>
          <h5>创建时间：</h5>
        <p>{{$user->created_at}}</p>
