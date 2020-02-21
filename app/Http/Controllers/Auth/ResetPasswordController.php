@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\Request;
 
 class ResetPasswordController extends Controller
 {
@@ -27,4 +28,13 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+
+   //重写trait方法来定义重置密码后的消息提示，也可以用事件监听
+    protected function sendResetResponse(Request $request, $response)
+    {
+        session()->flash('success','密码重置成功了噢😀');
+        return redirect($this->redirectPath());
+
+
+    }
 }
