@@ -16,7 +16,7 @@
          <p>{{$user->introduction}}</p>
          <hr>
          <h5>创建时间：</h5>
-       <p>{{$user->created_at}}</p>
+       <p>{{$user->created_at->diffForHumans()}}</p>
       </div>
     </div>
   </div>

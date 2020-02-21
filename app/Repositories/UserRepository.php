@@ -13,8 +13,7 @@ class UserRepository{
     }
 
     public function update($request, $id){
-
-        if(Auth::id()!==$id){
+        if(Auth::user()->id!=$id){
            return back()->with('danger','别搞事情啊');
         }
 

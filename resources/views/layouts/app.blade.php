@@ -39,5 +39,11 @@
 
  <!-- Scripts -->
  <script src="{{ mix('js/app.js') }}"></script>
-
+<script>
+  $(document).ready(function(){
+    setInterval(function(){
+      $('.flash-message').slideUp();
+    }, 3000);
+  })
+</script>
 </body>
