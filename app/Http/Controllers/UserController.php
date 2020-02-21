@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Handlers\ImageUploadHandler;
 use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
@@ -26,9 +27,9 @@ class UserController extends Controller
         return view('users.edit',compact('user'));
     }
 
-    public function update(UpdateUserRequest $request, $id){
+    public function update(UpdateUserRequest $request, ImageUploadHandler $upload ,$id){
 
-       $this->rep->update($request, $id);
+       $this->rep->update($request,$upload, $id);
 
        return redirect()->route('users.show',$id)->with('success','更改信息成功');
     }

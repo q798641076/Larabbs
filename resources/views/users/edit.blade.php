@@ -11,7 +11,7 @@
           </h4>
         </div>
         <div class="card-body">
-           {!! Form::model($user,['route'=>['users.update',$user->id],'method'=>'patch']) !!}
+           {!! Form::model($user,['route'=>['users.update',$user->id],'method'=>'patch','files'=>true]) !!}
 
            <div class="form-group">
            {!! Form::label('name', '姓名') !!}
@@ -30,6 +30,12 @@
              {!! Form::textarea('introduction', null, ['class'=>'form-control']) !!}
              {!!$errors->getBag('update')->first('introduction','<p class="text-danger">:message</p>')!!}
            </div>
+
+           <div class="form-group">
+            {!! Form::label('avatar', '头像上传') !!}
+            {!! Form::file('avatar', ['class'=>'form-control-file']) !!}
+            {!!$errors->getBag('update')->first('avatar','<p class="text-danger">:message</p>')!!}
+          </div>
 
            {!! Form::submit('保存资料', ['class'=>'btn btn-primary']) !!}
            {!! Form::close() !!}

@@ -28,7 +28,7 @@ class UpdateUserRequest extends FormRequest
         return [
             'name'=>'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name,'.Auth::id(),
             'email'=>'required|email|unique:users,email,'.Auth::id(),
-            'avatar'=>'image',
+            'avatar'=>'image|max:2048',
             'introduction'=>'max:80',
         ];
     }
@@ -42,7 +42,9 @@ class UpdateUserRequest extends FormRequest
             'name.unqiue'=>'名字已存在',
             'email.required'=>'邮箱不能为空',
             'email.email'=>'邮箱格式不对',
-            'introduction.max'=>'个人简历不能超过80字符'
+            'introduction.max'=>'个人简历不能超过80字符',
+            'avatar.image'=>'图片格式有误',
+            'avatar.max'=>'图片不能大于2mb'
         ];
     }
 }
