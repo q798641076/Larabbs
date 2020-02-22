@@ -6,7 +6,7 @@ use App\Handlers\ImageUploadHandler;
 use App\Http\Requests\UpdateUserRequest;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
-use App\User;
+use App\Models\User;
 
 class UserController extends Controller
 {

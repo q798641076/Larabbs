@@ -3,7 +3,7 @@
 @section('title', '编辑资料')
 @section('content')
    <div class="container">
-     <div class="col-lg-8 col-md-8 offset-md-2">
+     <div class="col-lg-8 col-md-8 offset-md-1">
       <div class="card ">
         <div class="card-header">
           <h4>
