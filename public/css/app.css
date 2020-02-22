@@ -10889,6 +10889,10 @@ body {
   font-size: 14px;
 }
 
+#app > .contanier {
+  margin-bottom: 100px;
+}
+
 .navbar-static-top {
   border-color: #e7e7e7;
   background-color: #fff;
@@ -10933,6 +10937,8 @@ footer .container p {
   margin: 19px 0;
   color: #c1c1c1;
 }
+
+/* Topic Index Page */
 
 /*!
  * Font Awesome Free 5.12.1 by @fontawesome - https://fontawesome.com
@@ -16869,5 +16875,9 @@ readers do not read off random characters that represent icons */
 .fab {
   font-family: "Font Awesome 5 Brands";
   font-weight: 400;
+}
+
+a:hover {
+  text-decoration: none;
 }
 
