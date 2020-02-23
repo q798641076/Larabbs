@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Handlers\ImageUploadHandler;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Topic;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -20,7 +21,11 @@ class UserController extends Controller
     }
 
     public function show(User $user){
-        return view('users.show',compact('user'));
+
+        $topics=$this->rep->show($user);
+
+        return view('users.show',compact('user','topics'));
+
     }
 
     public function edit(User $user){

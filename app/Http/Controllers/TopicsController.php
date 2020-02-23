@@ -16,8 +16,11 @@ class TopicsController extends Controller
 
 	public function index()
 	{
-        //预加载
-		$topics = Topic::with('user','category')->paginate();
+        //预加载在模型里面
+    
+        $topics = Topic::withOrder(request('order'))->paginate();
+
+
 		return view('topics.index', compact('topics'));
 	}
 

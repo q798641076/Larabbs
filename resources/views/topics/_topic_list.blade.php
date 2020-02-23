@@ -33,6 +33,7 @@
           <a href="#" class='text-secondary'>
               <i class="fa fa-clock"></i>{{$topic->updated_at->diffForHumans()}}
           </a>
+
           </small>
     </div>
        </li>

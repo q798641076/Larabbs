@@ -9,8 +9,14 @@
          <div class="card">
            <div class="card-header bg-transparent">
              <ul class="nav nav-pills ">
-               <li class="nav-item"><a href="" class="nav-link active">最后回复</a></li>
-               <li class="nav-item"><a href="" class="nav-link">最新发布</a></li>
+               <li class="nav-item">
+               <a href="{{Request::url()}}?order=recentReplied"
+               class="nav-link  @if(request()->fullUrl()==route('topics.index').'?order=recentReplied') active @endif">最后回复</a>
+              </li>
+               <li class="nav-item ">
+               <a href="{{Request::url()}}?order=recent"
+               class="nav-link  @if(request()->fullUrl()==route('topics.index').'?order=recent') active @endif">最新发布</a>
+              </li>
              </ul>
            </div>
 

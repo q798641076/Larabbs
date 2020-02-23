@@ -30,7 +30,14 @@
 <hr>
     <div class="card">
       <div class="card-body">
+
+       @if (count($topics))
+
+       @include('users._topic_list',['topics'=>$topics])
+
+       @else
        <strong>暂无发布信息/(ㄒoㄒ)/~</strong>
+   @endif
       </div>
     </div>
   </div>
