@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Category;
+use App\Models\Category;
 
 class Topic extends Model
 {

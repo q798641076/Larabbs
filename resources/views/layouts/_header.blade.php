@@ -11,6 +11,15 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <!-- Left Side Of Navbar -->
       <ul class="navbar-nav mr-auto">
+        <li class="nav-item @if(request()->url()==route('topics.index')) active @endif"><a href="{{route('topics.index')}}" class="nav-link">所有话题</a></li>
+
+          @if (count(\App\Models\Category::all()))
+             @foreach (\App\Models\Category::all() as $category)
+                <li class="nav-item @if(request()->url()===route('categories.show',$category->id)) active @endif ">
+                  <a href="{{route('categories.show',$category->id)}}" class="nav-link">{{$category->name}}</a>
+                </li>
+             @endforeach
+          @endif
 
       </ul>
 

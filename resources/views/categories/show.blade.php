@@ -1,11 +1,18 @@
 @extends('layouts.app')
 
-@section('title','话题列表')
+@section('title',isset($category)?$category->name:'所有话题')
 
 @section('content')
 <div class="container">
   <div class="row">
-   <div class="col-lg-9 col-md-9 col-xs-9 topic_list">
+   <div class="col-lg-9 col-md-9 col-xs-9">
+
+      @if (isset($category))
+            <div class="alert alert-info" role="alert">
+                {{$category->name}}&nbsp;:&nbsp;{{$category->description}}
+            </div>
+       @endif
+
          <div class="card">
            <div class="card-header bg-transparent">
              <ul class="nav nav-pills ">
