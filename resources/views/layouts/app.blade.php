@@ -16,7 +16,8 @@
   <!-- Styles -->
   {{-- 根据 webpack.mix.js 的逻辑来生成 CSS 文件链接。 --}}
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-
+  {{-- 加载文本编辑器 --}}
+   @yield('style')
 </head>
 
 <body>
@@ -39,6 +40,8 @@
 
  <!-- Scripts -->
  <script src="{{ mix('js/app.js') }}"></script>
+  {{-- 加载文本编辑器 --}}
+ @yield('script')
 <script>
   $(document).ready(function(){
     setInterval(function(){

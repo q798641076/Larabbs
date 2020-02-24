@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('style')
+  <link rel="stylesheet" href="{{asset('css/simditor.css')}}">
+@endsection
+
 @section('content')
 
 <div class="container">
@@ -31,7 +35,7 @@
             {!!$errors->first('category_id','<div class="alert alert-danger flash-message">:message</div>')!!}
             </div>
             <div class="form-group">
-            {!! Form::textarea('body', null, ['class'=>'form-control','placeholder'=>'请填写最少三个字符','rows'=>6,]) !!}
+            {!! Form::textarea('body', null, ['class'=>'form-control','placeholder'=>'请填写最少三个字符','rows'=>6,'id'=>'editor']) !!}
             </div>
             <div class="well well-sm">
               <button type="submit" class="btn btn-success"><i class="fa fa-save"></i></button>
@@ -43,4 +47,21 @@
 
 </div>
 
+@endsection
+
+@section('script')
+
+<script type="text/javascript" src="{{ asset('js/module.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/hotkeys.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/uploader.js') }}"></script>
+<script type="text/javascript" src="{{ asset('js/simditor.js') }}"></script>
+
+
+<script>
+   $(document).ready(function() {
+      var editor = new Simditor({
+        textarea: $('#editor'),
+      });
+    });
+</script>
 @endsection
