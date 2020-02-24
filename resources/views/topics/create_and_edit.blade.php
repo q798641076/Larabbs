@@ -23,9 +23,9 @@
 
         <div class="card-body">
           @isset($topic->id)
-            {!! Form::model($topic,['route'=>['topics.update',$topics->id],'method'=>'patch']) !!}
+            {!! Form::model($topic,['route'=>['topics.update',$topics->id],'method'=>'patch','files'=>true]) !!}
           @else
-            {!! Form::open(['route'=>['topics.store'],'method'=>'post']) !!}
+            {!! Form::open(['route'=>['topics.store'],'method'=>'post','files'=>true]) !!}
           @endisset
             <div class="form-group">
             {!! Form::text('title', null, ['class'=>'form-control','placeholder'=>'请填写标题','required']) !!}
@@ -61,6 +61,16 @@
    $(document).ready(function() {
       var editor = new Simditor({
         textarea: $('#editor'),
+        upload:{
+          url:'{{route('topics.upload_image')}}',
+          params:{
+            _token:'{{csrf_token()}}'
+          },
+          fileKey:'upload_file',
+          connectionCount:3,
+          leaveConfirm:'文件上传中，关闭此页面将取消上传。'
+        },
+        pasteImage:true
       });
     });
 </script>
