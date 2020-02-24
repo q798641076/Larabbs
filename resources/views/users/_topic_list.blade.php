@@ -14,7 +14,7 @@
 
       @foreach ($topics as $topic)
           <li class="list-group-item border-left-0 border-right-0 mt-lg-2  pl-1 pr-1 @if($loop->first) border-top-0 @endif">
-           <a href="">{{$topic->title}}</a>
+          <a href="{{route('topics.show',$topic->id)}}" class="text-dark">{{$topic->title}}</a>
            <small class="float-right text-secondary">
               {{$topic->reply_count}}&nbsp;回复
               <span>•</span>

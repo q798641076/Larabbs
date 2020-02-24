@@ -12,7 +12,7 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>@yield('title', 'LaraBBS') - Laravel 进阶教程</title>
-
+  <meta name="description" content="@yield('description','Larabbs站点社区')">
   <!-- Styles -->
   {{-- 根据 webpack.mix.js 的逻辑来生成 CSS 文件链接。 --}}
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">
