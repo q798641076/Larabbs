@@ -21,8 +21,12 @@ class TopicObserver
         //
     }
 
-    public function saving(Topic $topic){
+    public function saving(Topic $topic)
+    {
+        //入库之前进行xss过滤
+        $topic->body = clean($topic->body, 'user_topic_body');
+
         //make_excerpt()自定义函数，在helpers
-        return $topic->excerpt=make_excerpt($topic->body);
+        $topic->excerpt=make_excerpt($topic->body);
     }
 }
