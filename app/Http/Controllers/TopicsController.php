@@ -46,10 +46,13 @@ class TopicsController extends Controller
 		return redirect()->route('topics.show',$topic->id)->with('success','创建成功');
 	}
 
-	public function edit(Topic $topic)
+	public function edit(Topic $topic, Category $category)
 	{
-        $this->authorize('update', $topic);
-		return view('topics.create_and_edit', compact('topic'));
+        $this->authorize('update',$topic);
+
+        $category=$category->all();
+
+		return view('topics.create_and_edit', compact('topic','category'));
 	}
 
 	public function update(TopicRequest $request, Topic $topic)
@@ -58,15 +61,16 @@ class TopicsController extends Controller
 
 		$topic->update($request->all());
 
-		return redirect()->route('topics.show', $topic->id)->with('message', 'Updated successfully.');
+		return redirect()->route('topics.show', $topic->id)->with('success', '编辑成功.');
 	}
 
 	public function destroy(Topic $topic)
 	{
-		$this->authorize('destroy', $topic);
+        $this->authorize('destroy', $topic);
+
 		$topic->delete();
 
-		return redirect()->route('topics.index')->with('message', 'Deleted successfully.');
+		return redirect()->route('topics.index')->with('success', '删除成功.');
     }
 
     public function uploadImage(Request $request, ImageUploadHandler $file)
@@ -83,7 +87,7 @@ class TopicsController extends Controller
             $image=$request->upload_file;
 
             $result=$file->save($image, 'topics', Auth::id(), 1024);
-         
+
            if($result){
                $data['success']=true;
                $data['msg']='上传成功！';

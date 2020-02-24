@@ -23,7 +23,7 @@
 
         <div class="card-body">
           @isset($topic->id)
-            {!! Form::model($topic,['route'=>['topics.update',$topics->id],'method'=>'patch','files'=>true]) !!}
+            {!! Form::model($topic,['route'=>['topics.update',$topic->id],'method'=>'patch','files'=>true]) !!}
           @else
             {!! Form::open(['route'=>['topics.store'],'method'=>'post','files'=>true]) !!}
           @endisset
@@ -31,7 +31,7 @@
             {!! Form::text('title', null, ['class'=>'form-control','placeholder'=>'请填写标题','required']) !!}
             </div>
             <div class="form-group">
-            {!! Form::select('category_id', $category->pluck('name','id'), null, ['placeholder'=>'请选择分类','class'=>'form-control','required']) !!}
+            {!! Form::select('category_id', $category->pluck('name','id'), $topic->category_id, ['placeholder'=>'请选择分类','class'=>'form-control','required']) !!}
             {!!$errors->first('category_id','<div class="alert alert-danger flash-message">:message</div>')!!}
             </div>
             <div class="form-group">
