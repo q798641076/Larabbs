@@ -12,7 +12,7 @@
 
     <div class="media-body">
          <div class="media-heading mb-1" >
-          <a href="{{route('topics.show',$topic->id)}}" >
+          <a href="{{$topic->link()}}" >
             {{$topic->title}}
           </a>
         <span class="badge float-right badege-pill badge-primary" style="background:#d8d8d8">{{$topic->reply_count}}</span>

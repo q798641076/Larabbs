@@ -47,4 +47,8 @@ class User extends Authenticatable implements MustVerifyEmail
     public function isAuthOf($model){
         return $this->id==$model->user_id;
     }
+
+    public function link(){
+        return route('users.show',[$this->id,$this->name]);
+    }
 }

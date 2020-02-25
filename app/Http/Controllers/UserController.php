@@ -39,6 +39,6 @@ class UserController extends Controller
 
        $this->rep->update($request,$upload, $user);
 
-       return redirect()->route('users.show',$user->id)->with('success','更改信息成功');
+       return redirect()->to($user->link())->with('success','更改信息成功');
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Handlers\SlugTranslateHandler;
 use App\Models\Topic;
 
 // creating, created, updating, updated, saving,
@@ -28,5 +29,12 @@ class TopicObserver
 
         //make_excerpt()自定义函数，在helpers
         $topic->excerpt=make_excerpt($topic->body);
+
+        //入库之前对slug进行赋值
+        //app() 允许我们使用 Laravel 服务容器 ，此处我们用来生成 SlugTranslateHandler 实例。
+        if(!$topic->slug){
+             $topic->slug=app(SlugTranslateHandler::class)->translate($topic->title);
+        }
+
     }
 }

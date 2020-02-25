@@ -43,4 +43,9 @@ class Topic extends Model
     }
 
 
+    public function link($parem=[]){
+       //把id和slug给topics.show
+        return route('topics.show',array_merge([$this->id,$this->slug],$parem));
+    }
+
 }
