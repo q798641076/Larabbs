@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Handlers\ImageUploadHandler;
 use App\Http\Requests\UpdateUserRequest;
+use App\Models\Reply;
 use App\Models\Topic;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
 
@@ -22,9 +23,12 @@ class UserController extends Controller
 
     public function show(User $user){
 
+
         $topics=$this->rep->show($user);
 
-        return view('users.show',compact('user','topics'));
+        $replies=Reply::recent()->with('user','topic')->where('user_id',$user->id)->paginate(5);
+
+        return view('users.show',compact('user','topics','replies'));
 
     }
 
@@ -39,6 +43,6 @@ class UserController extends Controller
 
        $this->rep->update($request,$upload, $user);
 
-       return redirect()->to($user->link())->with('success','更改信息成功');
+       return redirect()->route('users.show',Auth::id())->with('success','更改信息成功');
     }
 }

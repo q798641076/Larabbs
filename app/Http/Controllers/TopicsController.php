@@ -28,8 +28,12 @@ class TopicsController extends Controller
 
     public function show(Topic $topic , Request $request)
     {
+        
+        //强制跳转301
         if(!empty($topic->slug)&&$topic->slug!=$request->slug){
+
             return redirect($topic->link(),301);
+
         }
 
 

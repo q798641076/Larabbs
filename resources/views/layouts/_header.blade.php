@@ -31,10 +31,17 @@
         <li class="nav-item"><a class="nav-link" href="{{route('register')}}">注册</a></li>
         @else
          <li class="nav-item">
-          <a href="{{route('topics.create')}}" class="nav-link mt-1 mr-1">
+          <a href="{{route('topics.create')}}" class="nav-link mt-1 mr-2">
               <i class="fa fa-plus"></i>
             </a>
          </li>
+         <li class="nav-item notification-badge">
+         <a href="{{route('notifications.index')}}"
+         class="nav-link badge mr-3 badge-pill badge-{{Auth::user()->notification_count > 0 ? 'hint': 'secondary'}} text-white">
+              {{Auth::user()->notification_count}}
+            </a>
+         </li>
+
          <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
             aria-haspopup="true" aria-expanded="false">
@@ -43,7 +50,7 @@
             {{Auth::user()->name}}
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a href="{{Auth::user()->link()}}" class="dropdown-item">个人中心</a>
+            <a href="{{route('users.show',Auth::id())}}" class="dropdown-item">个人中心</a>
             <a href="{{route('users.edit',Auth::id())}}" class="dropdown-item">编辑资料</a>
             <div class="dropdown-divider"></div>
             <a href="" class="dropdown-item">

@@ -31,13 +31,14 @@
     <div class="card">
       <div class="card-body">
 
-       @if (count($topics))
+       @if (count($topics)||count($replies))
 
-       @include('users._topic_list',['topics'=>$topics])
+       @include('users._topic_list')
 
        @else
-       <strong>暂无发布信息/(ㄒoㄒ)/~</strong>
-   @endif
+       <strong>暂无发布信息/(ㄒoㄒ)/~</strong> --}}
+
+  -@endif
       </div>
     </div>
   </div>

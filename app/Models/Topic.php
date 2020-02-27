@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Category;
+use App\Models\Reply;
 
 class Topic extends Model
 {
@@ -13,6 +14,10 @@ class Topic extends Model
     }
     public function category(){
         return $this->belongsTo(Category::class, 'category_id');
+    }
+    public function reply()
+    {
+        return $this->hasMany(Reply::class, 'topic_id');
     }
 
     //作用域查询排序

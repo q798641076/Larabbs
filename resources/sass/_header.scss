@@ -23,3 +23,16 @@ body {
     border-radius: 5px;
     border: 1px solid rgb(68, 67, 67);
 }
+
+.notification-badge {
+    .badge {
+        font-size: 12px;
+        margin-top: 14px;
+    }
+    .badge-secondary {
+        background-color: #EBE8E8;
+    }
+    .badge-hint {
+        background-color: #d15b47 !important;
+    }
+}
