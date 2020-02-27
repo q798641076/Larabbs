@@ -18,11 +18,15 @@
           <span class=" text-secondary" title="{{ $reply->created_at }}">{{ $reply->created_at->diffForHumans() }}</span>
 
           {{-- 回复删除按钮 --}}
-          <span class=" float-right mr-2">
-            <a title="删除回复">
-              <i class="far fa-trash-alt"></i>
-            </a>
-          </span>
+          @can('destroy', $reply)
+            <span class=" float-right mr-2">
+              {!! Form::open(['route'=>['replies.destroy',$reply->id], 'method'=>'delete','onsubmit'=>"return confirm('确定要删除?')"]) !!}
+              <button type="submit" class="btn btn-sm">
+                  <i class="far fa-trash-alt"></i>
+              </button>
+              {!! Form::close() !!}
+            </span>
+          @endcan
         </div>
         <div class="reply-content text-secondary">
           {!! $reply->content !!}

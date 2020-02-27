@@ -15,6 +15,7 @@ class ReplyPolicy extends Policy
 
     public function destroy(User $user, Reply $reply)
     {
-        return true;
+        //评论属于我 可以删除,或者话题属于我 可以删除
+        return $user->isAuthOf($reply)||$user->isAuthOf($reply->topic);
     }
 }

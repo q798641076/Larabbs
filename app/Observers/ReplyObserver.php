@@ -33,11 +33,13 @@ class ReplyObserver
 
         $reply->topic->user->toNotify(new TopicReplied($reply));
 
-
         //回复总数
-        $reply->topic->reply_count=$reply->topic->reply->count();
-        $reply->topic->save();
+       $reply->topic->updateReplyCount();
 
-
+    }
+    public function deleted(Reply $reply)
+    {
+        //减去回复数量
+        $reply->topic->updateReplyCount();
     }
 }

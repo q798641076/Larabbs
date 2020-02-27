@@ -13,7 +13,7 @@ class NotificationController extends Controller
         $notifications=Auth::user()->notifications()->paginate(10);
 
         //将消息设为已读;
-
+        
         Auth::user()->markAsRead();
 
         return view('users.notification',compact('notifications'));

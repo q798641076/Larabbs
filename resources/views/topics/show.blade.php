@@ -65,7 +65,7 @@
 
       <div class="card mt-4">
         @includeWhen(Auth::check(),'replies._reply_box',['topic'=>$topic])
-        @include('replies._reply_list',['replies'=>$topic->reply()->with('user')->paginate(5)])
+        @include('replies._reply_list',['replies'=>$topic->reply()->with('user','topic')->paginate(5)])
       </div>
     </div>
   </div>
