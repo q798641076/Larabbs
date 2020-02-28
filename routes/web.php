@@ -30,4 +30,4 @@ Route::post('uploadImage', 'TopicsController@uploadImage')->name('topics.upload_
 
 Route::resource('replies', 'RepliesController', ['only' => [ 'create', 'store',  'destroy']]);
 
-Route::resource('notifications', 'NotificationController',['only'=>'index']);
+Route::resource('notifications', 'NotificationController',['only'=>['index','destroy']]);

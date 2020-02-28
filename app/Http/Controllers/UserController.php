@@ -18,11 +18,12 @@ class UserController extends Controller
     public function __construct(UserRepository $rep)
     {
         $this->rep=$rep;
+
         return $this->middleware('auth',['except'=>'show']);
     }
 
     public function show(User $user){
-
+        dd($user->hasPermissionTo('manage_users'));
 
         $topics=$this->rep->show($user);
 
@@ -35,6 +36,7 @@ class UserController extends Controller
     public function edit(User $user){
         //授权：：不让这个用户去访问另外一个用户的操作界面
         $this->authorize('update', $user);
+
         return view('users.edit',compact('user'));
     }
 

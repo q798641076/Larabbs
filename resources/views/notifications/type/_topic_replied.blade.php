@@ -24,6 +24,13 @@
 
       <div class="reply-content">
           {!! $notification->data['reply_content'] !!}
+          <span class="float-right" title="删除">
+            {!! Form::open(['route'=>['notifications.destroy',$notification->id],'method'=>'delete']) !!}
+            <button class="btn btn-default btn-sm">
+              <i class="fa fa-trash-alt text-secondary"></i>
+            </button>
+            {!! Form::close() !!}
+          </span>
       </div>
     </div>
 

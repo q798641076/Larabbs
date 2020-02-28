@@ -9,12 +9,13 @@ use Illuminate\Auth\MustVerifyEmail as MustVerifyEmailTrait;
 use App\Models\Topic;
 use App\Models\Reply;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Traits\HasRoles;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
     //要use MustVerifyEmailTrait才能用到里面的方法
     use MustVerifyEmailTrait;
-
+    use HasRoles;
     //复写我们的notify()
     use Notifiable
     {

@@ -13,9 +13,15 @@ class NotificationController extends Controller
         $notifications=Auth::user()->notifications()->paginate(10);
 
         //将消息设为已读;
-        
+
         Auth::user()->markAsRead();
 
         return view('users.notification',compact('notifications'));
+    }
+
+    public function destroy(Request $request)
+    {
+        \DB::table('notifications')->where('id',$request->id)->delete();
+        return back()->with('success','删除成功');
     }
 }
