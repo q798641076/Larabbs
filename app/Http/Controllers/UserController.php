@@ -23,8 +23,8 @@ class UserController extends Controller
     }
 
     public function show(User $user){
-        dd($user->hasPermissionTo('manage_users'));
 
+     
         $topics=$this->rep->show($user);
 
         $replies=Reply::recent()->with('user','topic')->where('user_id',$user->id)->paginate(5);

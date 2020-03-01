@@ -28,12 +28,19 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-         // 修改策略自动发现的逻辑  如果你的模型放在了App\Models下面就要执行这条
-        Gate::guessPolicyNamesUsing(function ($modelClass) {
-            // 动态返回模型对应的策略名称，如：// 'App\Model\User' => 'App\Policies\UserPolicy',
-            return 'App\Policies\\'.class_basename($modelClass).'Policy';
+        //权限：如果你是站长你才能登录Horizon
+        \Horizon::auth(function ($request) {
+            // 是否是站长
+             \Auth::user()->hasRole('Founder');
         });
 
+        // 修改策略自动发现的逻辑  如果你的模型放在了App\Models下面就要执行这条
+        Gate::guessPolicyNamesUsing(function ($modelClass) {
+        // 动态返回模型对应的策略名称，如：// 'App\Model\User' => 'App\Policies\UserPolicy',
+        return 'App\Policies\\'.class_basename($modelClass).'Policy';
+
+
+    });
 
     }
 }

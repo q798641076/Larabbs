@@ -11,8 +11,9 @@
   {{-- csrf-token 标签是为了方便前端的 JavaScript 脚本获取 CSRF 令牌。 --}}
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
-  <title>@yield('title', 'LaraBBS') - Laravel 进阶教程</title>
+  <title>@yield('title', 'LaraBBS') {{setting('site_name','')}}</title>
   <meta name="description" content="@yield('description','Larabbs站点社区')">
+  <meta name="keyword" content="{{setting('site_keyword','laravel爱好者')}}">
   <!-- Styles -->
   {{-- 根据 webpack.mix.js 的逻辑来生成 CSS 文件链接。 --}}
   <link href="{{ mix('css/app.css') }}" rel="stylesheet">

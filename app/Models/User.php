@@ -10,6 +10,7 @@ use App\Models\Topic;
 use App\Models\Reply;
 use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -66,6 +67,28 @@ class User extends Authenticatable implements MustVerifyEmail
 
             //循环所有未读消息,将它设为已读
             $this->unreadNotifications->markAsRead();
+        }
+
+
+        //模型修改器，在管理用户页面修改密码的时候需要重新对密码加密
+        public function setPasswordAttribute($value)
+        {
+            //如果密码长度不等于60证明还没加密处理
+            if(strlen($value)!=60)
+            {
+               $value=bcrypt($value);
+            }
+          $this->attributes['password']=$value;
+        }
+        //头像路径
+        public function setAvatarAttribute($path)
+        {
+            //如果字符串头不是http，那就证明是后台上传的，需要重新拼接url
+            if(!Str::startsWith($path,'http'))
+            {
+                $path=config('app.url').'/upload/image/avatar/'.$path;
+            }
+            $this->attributes['avatar']=$path;
         }
 
 
