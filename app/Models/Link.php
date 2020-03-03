@@ -11,7 +11,7 @@ class Link extends Model
         'title','link'
     ];
 
-   protected  $cache_key='larabbs_avtive_links';
+   public  $cache_key='larabbs_avtive_links';
    protected  $cache_empire_in_seconds='1440*60';
 
     //缓存活跃资源，因为推荐资源数据属于极少修改的数据，我们还会使用缓存来为加速读取。
@@ -27,4 +27,5 @@ class Link extends Model
         });
 
 
-  
+    }
+}
