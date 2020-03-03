@@ -9,6 +9,9 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TopicRequest;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\Link;
+
 class TopicsController extends Controller
 {
     public function __construct()
@@ -16,19 +19,24 @@ class TopicsController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
-	public function index()
+	public function index(User $user,Link $link)
 	{
         //预加载在模型里面
 
         $topics = Topic::withOrder(request('order'))->paginate();
 
+        //加载活跃用户
+        $active_users=$user->getActiveUsers();
 
-		return view('topics.index', compact('topics'));
+        //获取资源推荐 利用缓存
+        $active_links=$link->cacheActiveLink();
+
+		return view('topics.index', compact('topics','active_users','active_links'));
 	}
 
     public function show(Topic $topic , Request $request)
     {
-        
+
         //强制跳转301
         if(!empty($topic->slug)&&$topic->slug!=$request->slug){
 

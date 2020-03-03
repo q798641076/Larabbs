@@ -14,6 +14,8 @@ use Illuminate\Support\Str;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
+    //活跃用户traits
+    use Traits\ActiveUserHelper;
     //要use MustVerifyEmailTrait才能用到里面的方法
     use MustVerifyEmailTrait;
     use HasRoles;

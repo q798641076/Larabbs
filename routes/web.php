@@ -33,3 +33,5 @@ Route::resource('replies', 'RepliesController', ['only' => [ 'create', 'store', 
 Route::resource('notifications', 'NotificationController',['only'=>['index','destroy']]);
 
 Route::get('permissions','PagesController@permission')->name('permissions');
+
+
